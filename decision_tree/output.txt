@@ -1,0 +1,15 @@
+# DT(min_samples_split=40)
+no. of Chris training emails: 7936
+no. of Sara training emails: 7884
+no of featrues in training data: 3785
+svm linear training time: 60.257 s
+svm linear prediction time: 0.031 s
+svm linear accuracy: 0.977 %
+
+# DT(min_samples_split=40), features_percentile=1
+no. of Chris training emails: 7936
+no. of Sara training emails: 7884
+no of featrues in training data: 379
+svm linear training time: 5.151 s
+svm linear prediction time: 0.0 s
+svm linear accuracy: 0.966 %
