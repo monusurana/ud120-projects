@@ -1,0 +1,31 @@
+# SVC(kernel='linear')
+no. of Chris training emails: 7936
+no. of Sara training emails: 7884
+svm linear training time: 225.794 s
+svm linear prediction time: 27.353 s
+svm linear accuracy: 0.984 %
+
+# SVC(kernel='linear'), Smaller training set
+no. of Chris training emails: 7936
+no. of Sara training emails: 7884
+svm linear training time: 0.093 s
+svm linear prediction time: 0.952 s
+svm linear accuracy: 0.885 %
+
+# SVC(kernel='rbf', C=10000.0), Smaller training set
+no. of Chris training emails: 7936
+no. of Sara training emails: 7884
+rbf training time: 0.138 s
+rbf prediction time: 1.259 s
+rbf linear accuracy: 0.892 %
+no of Chris' emails: 1018
+no of Sara' emails: 740
+
+# SVC(kernel='rbf', C=10000.0)
+no. of Chris training emails: 7936
+no. of Sara training emails: 7884
+rbf training time: 156.283 s
+rbf prediction time: 15.762 s
+rbf linear accuracy: 0.991 %
+no of Chris' emails: 877
+no of Sara' emails: 881
