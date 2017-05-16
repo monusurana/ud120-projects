@@ -1,0 +1,13 @@
+No of people in the data set: 146
+No of features in each data set: 21
+
+POI Count: 18
+People with salary mentioned: 95
+People with email mentioned: 111
+People with total payments missing: 21 percentage: 0.143835616438
+POI with total payments missing: 0 percentage: 0.0
+
+James Prentice Total Stock value: 1095040
+Wesley Colwell Emails to POI: 11
+Jeffrey K Skilling Stock options exercised: 19250000
+Total Payments: Skillings: 8682716 Lay: 103559793 Fastow: 2424083
