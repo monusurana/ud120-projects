@@ -1,0 +1,6 @@
+Slope: [ 5.44814029]
+Intercept: -102360.543294
+Mean squared error: 1.24472853526e+12
+('Test Score:', -1.4849924173685092)
+('Training score:', 0.045509192699524359)
+Slope after training with test data: [ 2.27410114]
