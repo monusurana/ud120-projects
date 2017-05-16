@@ -1,0 +1,14 @@
+# KNN(n_neighbors=3)
+KNN linear training time: 0.0 s
+KNN linear prediction time: 0.0 s
+KNN linear accuracy: 0.936 %
+
+# Adaboost
+Adaboost linear training time: 0.268 s
+Adaboost linear prediction time: 0.0 s
+Adaboost linear accuracy: 0.924 %
+
+# Random Forest
+Random Forest linear training time: 0.047 s
+Random Forest linear prediction time: 0.015 s
+Random Forest linear accuracy: 0.92 %
