@@ -1,0 +1,4 @@
+Slope: [[ 5.07793064]]
+Score: 0.878262470366
+Slope after removing outliers: [[ 6.36859481]]
+Score after removing outliers: 0.983189455396
