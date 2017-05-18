@@ -72,7 +72,10 @@ def featureFormat( dictionary, features, remove_NaN=True, remove_all_zeroes=True
             value = dictionary[key][feature]
             if value=="NaN" and remove_NaN:
                 value = 0
-            tmp_list.append( float(value) )
+            if type(value) is str:
+                tmp_list.append(value)
+            else:
+                tmp_list.append( float(value) )
 
         # Logic for deciding whether or not to add the data point.
         append = True
