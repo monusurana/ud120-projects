@@ -14,6 +14,7 @@ import sys
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
 from sklearn.cluster import KMeans
+from sklearn import preprocessing
 
 
 
@@ -75,6 +76,24 @@ try:
     Draw(pred, finance_features, poi, mark_poi=False, name="clusters_2_features.pdf", f1_name=feature_1, f2_name=feature_2)
 except NameError:
     print "no predictions object named pred found, no clusters to plot"
+
+print finance_features
+
+min_max_scaler = preprocessing.MinMaxScaler()
+finance_features_scaled = min_max_scaler.fit_transform(finance_features)
+
+print finance_features_scaled
+
+kmeans = KMeans(n_clusters=2, random_state=0).fit(finance_features_scaled)
+pred = kmeans.predict(finance_features_scaled)
+
+### rename the "name" parameter when you change the number of features
+### so that the figure gets saved to a different file
+try:
+    Draw(pred, finance_features_scaled, poi, mark_poi=False, name="clusters_2_features_scaled.pdf", f1_name=feature_1, f2_name=feature_2)
+except NameError:
+    print "no predictions object named pred found, no clusters to plot"
+
 
 # Adding the third feature and redoing the clustering
 feature_3 = "total_payments"
