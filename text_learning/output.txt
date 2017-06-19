@@ -1,0 +1,17 @@
+# Default
+emails processed
+152nd word: tjonesnsf stephani and sam need nymex calendar
+Feature at 34598: stephanlonect
+No of features: 38757
+
+# After removing sshacklensf as well
+emails processed
+152nd word: tjonesnsf stephani and sam need nymex calendar
+Feature at 34598: stephen
+No of features: 38756
+
+# After removing cgermannsf as well
+emails processed
+152nd word: tjonesnsf stephani and sam need nymex calendar
+Feature at 34598: stephenharatuniancsfbcom
+No of features: 38755

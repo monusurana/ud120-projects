@@ -42,22 +42,30 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         ### only look at first 200 emails when developing
         ### once everything is working, remove this line to run over full dataset
         temp_counter += 1
-        if temp_counter < 200:
-            path = os.path.join('..', path[:-1])
-            print path
-            email = open(path, "r")
 
-            ### use parseOutText to extract the text from the opened email
+        path = os.path.join('..', path[:-2])
+        path += '_'
+        email = open(path, "r")
 
-            ### use str.replace() to remove any instances of the words
-            ### ["sara", "shackleton", "chris", "germani"]
+        ### use parseOutText to extract the text from the opened email
+        text = parseOutText(email)
 
-            ### append the text to word_data
+        ### use str.replace() to remove any instances of the words
+        ### ["sara", "shackleton", "chris", "germani"]
+        sig_words = ["sara", "shackleton", "chris", "germani", "sshacklensf", "cgermannsf"]
+        for s in sig_words:
+            text = text.replace(s, '')
 
-            ### append a 0 to from_data if email is from Sara, and 1 if email is from Chris
+        ### append the text to word_data
+        word_data.append(text)
 
+        ### append a 0 to from_data if email is from Sara, and 1 if email is from Chris
+        if name == "sara":
+            from_data.append(0)
+        else:
+            from_data.append(1)
 
-            email.close()
+        email.close()
 
 print "emails processed"
 from_sara.close()
@@ -66,10 +74,13 @@ from_chris.close()
 pickle.dump( word_data, open("your_word_data.pkl", "w") )
 pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 
-
-
-
+print "152nd word:", word_data[152]
 
 ### in Part 4, do TfIdf vectorization here
+from sklearn.feature_extraction.text import TfidfVectorizer
 
+tfidf_vectorizer = TfidfVectorizer(stop_words='english')
+tfidf_matrix = tfidf_vectorizer.fit_transform(word_data)
 
+print "Feature at 34598:", tfidf_vectorizer.get_feature_names()[34598]
+print "No of features:", len(tfidf_vectorizer.get_feature_names())
