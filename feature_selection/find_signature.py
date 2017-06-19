@@ -2,7 +2,10 @@
 
 import pickle
 import numpy
+from time import time
+from sklearn import tree
 numpy.random.seed(42)
+import numpy as np
 
 
 ### The words (features) and authors (labels), already largely processed.
@@ -25,19 +28,42 @@ features_train, features_test, labels_train, labels_test = cross_validation.trai
 from sklearn.feature_extraction.text import TfidfVectorizer
 vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5,
                              stop_words='english')
-features_train = vectorizer.fit_transform(features_train)
+features_train = vectorizer.fit_transform(features_train).toarray()
 features_test  = vectorizer.transform(features_test).toarray()
+
+
 
 
 ### a classic way to overfit is to use a small number
 ### of data points and a large number of features;
 ### train on only 150 events to put ourselves in this regime
-features_train = features_train[:150].toarray()
+
+features_train = features_train[:150]
 labels_train   = labels_train[:150]
-
-
 
 ### your code goes here
 
+clf = tree.DecisionTreeClassifier()
 
+t0 = time()
+clf.fit(features_train, labels_train)
+print "DT linear training time:", round(time()-t0, 3), "s"
+
+A = np.array(clf.feature_importances_)
+maximum_indices = np.where(A > 0.2)
+print "No of feature with importance > 0.2:", len(maximum_indices[0])
+
+maximum_indices = np.where(A==max(clf.feature_importances_))
+
+print "Max Feature Importance:", max(clf.feature_importances_)
+print "Max feature index:", maximum_indices[0][0]
+print "Feature at", maximum_indices[0][0], ":", vectorizer.get_feature_names()[maximum_indices[0][0]]
+
+t1 = time()
+pred = clf.predict(features_test)
+print "DT linear prediction time:", round(time()-t1, 3), "s"
+
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(pred, labels_test)
+print "DT linear accuracy:", str(round(accuracy, 3)), "%"
 

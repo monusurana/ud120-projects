@@ -1,0 +1,24 @@
+# Default
+DT linear training time: 0.124 s
+Max Feature Importance: 0.764705882353
+Max feature index: 33614
+Feature at 33614: sshacklensf
+DT linear prediction time: 1.019 s
+DT linear accuracy: 0.948 %
+
+# After removing sshacklensf as well
+DT linear training time: 0.172 s
+Max Feature Importance: 0.666666666667
+Max feature index: 14343
+Feature at 14343: cgermannsf
+DT linear prediction time: 6.18 s
+DT linear accuracy: 0.951 %
+
+# After removing cgermannsf as well
+DT linear training time: 0.15 s
+No of feature with importance > 0.2: 1
+Max Feature Importance: 0.363636363636
+Max feature index: 21323
+Feature at 21323: houectect
+DT linear prediction time: 1.694 s
+DT linear accuracy: 0.817 %
