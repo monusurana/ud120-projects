@@ -1,0 +1,132 @@
+===================================================
+Faces recognition example using eigenfaces and SVMs
+===================================================
+
+The dataset used in this example is a preprocessed excerpt of the
+"Labeled Faces in the Wild", aka LFW_:
+
+  http://vis-www.cs.umass.edu/lfw/lfw-funneled.tgz (233MB)
+
+  .. _LFW: http://vis-www.cs.umass.edu/lfw/
+
+  original source: http://scikit-learn.org/stable/auto_examples/applications/face_recognition.html
+
+
+C:\Python27\lib\site-packages\sklearn\cross_validation.py:44: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  "This module will be removed in 0.20.", DeprecationWarning)
+C:\Python27\lib\site-packages\sklearn\grid_search.py:43: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. This module will be removed in 0.20.
+  DeprecationWarning)
+2017-06-19 23:42:19,184 Loading LFW people faces from C:\Users\msurana\scikit_learn_data\lfw_home
+Total dataset size:
+n_samples: 1288
+n_features: 1850
+n_classes: 7
+Extracting the top 300 eigenfaces from 966 faces
+C:\Python27\lib\site-packages\sklearn\utils\deprecation.py:52: DeprecationWarning: Class RandomizedPCA is deprecated; RandomizedPCA was deprecated in 0.18 and will be removed in 0.20. Use PCA(svd_solver='randomized') instead. The new implementation DOES NOT store whiten ``components_``. Apply transform to get them.
+  warnings.warn(msg, category=DeprecationWarning)
+done in 1.816s
+Explained variance ratio [  1.82731806e-01   1.42574576e-01   6.83731744e-02   5.86386304e-02
+   4.52412149e-02   2.68445298e-02   2.47838189e-02   2.06389467e-02
+   1.97368330e-02   1.76861011e-02   1.66498553e-02   1.54487929e-02
+   1.20907714e-02   1.04244352e-02   1.00230488e-02   9.46231632e-03
+   8.91484322e-03   8.35359649e-03   8.08495889e-03   7.46959995e-03
+   6.97294950e-03   6.67731823e-03   6.41588314e-03   5.74726694e-03
+   5.28921919e-03   5.20677301e-03   5.15184640e-03   4.69579912e-03
+   4.37111216e-03   4.15261163e-03   3.95401643e-03   3.84753943e-03
+   3.76221789e-03   3.69360132e-03   3.48441542e-03   3.34902185e-03
+   3.30661898e-03   3.01049185e-03   3.00716035e-03   2.94854117e-03
+   2.88716481e-03   2.87473737e-03   2.74438446e-03   2.58184380e-03
+   2.52324280e-03   2.48103004e-03   2.39193847e-03   2.35786205e-03
+   2.32185951e-03   2.24061202e-03   2.22718588e-03   2.19140166e-03
+   2.11376800e-03   2.08666147e-03   2.02987038e-03   1.99960005e-03
+   1.98027232e-03   1.94375965e-03   1.89878928e-03   1.84217421e-03
+   1.79612577e-03   1.73378279e-03   1.68773733e-03   1.68359041e-03
+   1.63586122e-03   1.61600155e-03   1.58238850e-03   1.55579466e-03
+   1.54834253e-03   1.52202973e-03   1.49676318e-03   1.44667574e-03
+   1.41651000e-03   1.38891467e-03   1.37889806e-03   1.36756436e-03
+   1.32803817e-03   1.30852472e-03   1.29940638e-03   1.28554589e-03
+   1.25728834e-03   1.23839033e-03   1.22515991e-03   1.20738287e-03
+   1.20256791e-03   1.18059024e-03   1.15413545e-03   1.14215964e-03
+   1.09969031e-03   1.08095850e-03   1.05555469e-03   1.05140720e-03
+   1.04585166e-03   1.02871623e-03   1.01909466e-03   9.87789387e-04
+   9.78401664e-04   9.64557089e-04   9.58750979e-04   9.33174176e-04
+   9.20247690e-04   9.08993257e-04   9.05660633e-04   8.80909577e-04
+   8.75257504e-04   8.58553567e-04   8.50303377e-04   8.22342364e-04
+   8.13971946e-04   7.94233567e-04   7.91468135e-04   7.80854462e-04
+   7.68593745e-04   7.57271606e-04   7.55477047e-04   7.42067199e-04
+   7.40705499e-04   7.24181943e-04   7.14896667e-04   6.99878660e-04
+   6.90904094e-04   6.78045637e-04   6.70894696e-04   6.66801502e-04
+   6.62955244e-04   6.52824003e-04   6.46404830e-04   6.40593834e-04
+   6.30365193e-04   6.28783353e-04   6.18397310e-04   6.08715465e-04
+   6.00223861e-04   5.93148357e-04   5.86890354e-04   5.79819372e-04
+   5.75454796e-04   5.68590562e-04   5.58748546e-04   5.58428893e-04
+   5.48281885e-04   5.44665380e-04   5.41313733e-04   5.38230646e-04
+   5.24613325e-04   5.21649906e-04   5.16501082e-04   5.13189491e-04
+   5.03577133e-04   5.02558480e-04   4.95897007e-04   4.93537665e-04
+   4.89588326e-04   4.76384945e-04   4.74902515e-04   4.72762463e-04
+   4.65455708e-04   4.61186778e-04   4.60166060e-04   4.52303661e-04
+   4.50608982e-04   4.46243439e-04   4.42871179e-04   4.39431288e-04
+   4.35935519e-04   4.31051647e-04   4.27427714e-04   4.20826068e-04
+   4.17565476e-04   4.14216774e-04   4.12329161e-04   4.04956118e-04
+   4.01741499e-04   3.96136600e-04   3.91244729e-04   3.90549256e-04
+   3.88299482e-04   3.83615138e-04   3.80761050e-04   3.77864781e-04
+   3.73610858e-04   3.68145060e-04   3.64369081e-04   3.61458100e-04
+   3.60193545e-04   3.58211374e-04   3.52812611e-04   3.51187880e-04
+   3.48228220e-04   3.45692155e-04   3.40745128e-04   3.37411008e-04
+   3.35486501e-04   3.32059271e-04   3.27951741e-04   3.24175270e-04
+   3.19039556e-04   3.17298289e-04   3.14133974e-04   3.08855907e-04
+   3.06898655e-04   3.01799635e-04   3.01425481e-04   3.00562276e-04
+   2.98352671e-04   2.96207922e-04   2.94361384e-04   2.91771823e-04
+   2.91239612e-04   2.83365405e-04   2.82580558e-04   2.79574573e-04
+   2.78431531e-04   2.72998378e-04   2.70186557e-04   2.68945964e-04
+   2.67495117e-04   2.63681026e-04   2.62951674e-04   2.61830172e-04
+   2.59996193e-04   2.56831961e-04   2.55328349e-04   2.51339888e-04
+   2.48100900e-04   2.46525093e-04   2.45527203e-04   2.43645876e-04
+   2.41557686e-04   2.39522541e-04   2.38990076e-04   2.37752622e-04
+   2.34485265e-04   2.32179810e-04   2.30825904e-04   2.27382207e-04
+   2.26934536e-04   2.23693322e-04   2.20842388e-04   2.20172707e-04
+   2.18990392e-04   2.16580126e-04   2.14426973e-04   2.12768536e-04
+   2.11038045e-04   2.09520857e-04   2.09142616e-04   2.05462570e-04
+   2.02780991e-04   2.00371699e-04   1.99611312e-04   1.98649867e-04
+   1.96281255e-04   1.92627995e-04   1.91198402e-04   1.89985181e-04
+   1.88957186e-04   1.87606540e-04   1.86210651e-04   1.84581888e-04
+   1.83048563e-04   1.81025870e-04   1.79179285e-04   1.75167440e-04
+   1.74866094e-04   1.73019046e-04   1.71880532e-04   1.69712375e-04
+   1.68928338e-04   1.67159027e-04   1.63777063e-04   1.63268085e-04
+   1.62606330e-04   1.61453574e-04   1.61067620e-04   1.58933506e-04
+   1.56284291e-04   1.55722965e-04   1.55233372e-04   1.54231850e-04
+   1.51267033e-04   1.51050730e-04   1.49491743e-04   1.48127550e-04
+   1.46307647e-04   1.44834649e-04   1.43781379e-04   1.42411013e-04
+   1.39785867e-04   1.38293599e-04   1.36999966e-04   1.36398614e-04
+   1.35180061e-04   1.32710636e-04   1.32226702e-04   1.30387093e-04
+   1.29440248e-04   1.28398204e-04   1.27322814e-04   1.25045199e-04]
+Projecting the input data on the eigenfaces orthonormal basis
+done in 0.105s
+Fitting the classifier to the training set
+done in 35.704s
+Best estimator found by grid search:
+SVC(C=1000.0, cache_size=200, class_weight='balanced', coef0=0.0,
+  decision_function_shape=None, degree=3, gamma=0.0005, kernel='rbf',
+  max_iter=-1, probability=False, random_state=None, shrinking=True,
+  tol=0.001, verbose=False)
+Predicting the people names on the testing set
+done in 0.107s
+                   precision    recall  f1-score   support
+
+     Ariel Sharon       0.54      0.54      0.54        13
+     Colin Powell       0.75      0.88      0.81        60
+  Donald Rumsfeld       0.67      0.67      0.67        27
+    George W Bush       0.88      0.86      0.87       146
+Gerhard Schroeder       0.75      0.60      0.67        25
+      Hugo Chavez       0.73      0.53      0.62        15
+       Tony Blair       0.81      0.83      0.82        36
+
+      avg / total       0.80      0.80      0.80       322
+
+[[  7   1   3   2   0   0   0]
+ [  1  53   2   3   0   1   0]
+ [  3   1  18   3   1   0   1]
+ [  1   9   3 126   3   1   3]
+ [  0   1   1   5  15   1   2]
+ [  0   4   0   1   1   8   1]
+ [  1   2   0   3   0   0  30]]
