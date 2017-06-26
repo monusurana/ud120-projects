@@ -1,0 +1,11 @@
+DT linear accuracy before CV: 0.989473684211
+No of POIs in test set: 4
+No of people in test set: 29
+Accuracy if identifier predicted 0: 0.862068965517
+Prediction array: [ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  0.
+  0.  1.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
+Labels array: [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.
+  0.  0.  0.  0.  1.  0.  1.  1.  0.  1.  0.]
+DT accuracy after CV: 0.724 %
+DT precision after CV: 0.0 %
+DT recall after CV: 0.0 %
