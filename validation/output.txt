@@ -1,0 +1,2 @@
+DT linear accuracy: 0.989473684211
+DT linear accuracy: 0.724 %
